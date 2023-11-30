@@ -1,0 +1,7 @@
+import menu from "./menu.svg";
+import close from "./close.svg";
+import ScrollLine from "./ScrollLine.svg";
+import Circle from "./Circle.svg";
+import Cross from "./Cross.svg";
+
+export { menu, close, ScrollLine, Circle, Cross };
