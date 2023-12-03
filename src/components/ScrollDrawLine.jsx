@@ -1,5 +1,5 @@
 import { motion, useAnimation, useScroll } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 // helper functions
 function getInitialAnimationLength(defaultLength, viewportHeight) {
@@ -30,9 +30,9 @@ const ScrollDrawLine = () => {
   const viewportHeight = window.innerHeight;
 
   // parameters
-  const lineLength = 3500;
-  const initialAnimationLength = getInitialAnimationLength(500, viewportHeight);
-  const scrollScaleFactor = getScrollScaleFactor(0.6, viewportHeight);
+  const lineLength = 4000;
+  const initialAnimationLength = getInitialAnimationLength(300, viewportHeight);
+  const scrollScaleFactor = getScrollScaleFactor(0.75, viewportHeight);
 
   const initialFraction = initialAnimationLength / viewportHeight;
 
@@ -41,7 +41,10 @@ const ScrollDrawLine = () => {
     controls.start({
       pathLength: initialFraction,
       transition: {
-        duration: 1,
+        type: "spring",
+        stiffness: 50,
+        duration: 20,
+        delay: 1,
         ease: "easeInOut",
       },
     });
@@ -65,7 +68,7 @@ const ScrollDrawLine = () => {
     <div className="absolute ss:top-[150px] top-[25px] z-10 xl:px-[226px] sm:px-[46px] px-[26px]">
       <svg
         className="block"
-        width="full"
+        width={svgWidth}
         height={`${lineLength}px`} // Adjust the height to match the line length
         viewBox={`0 0 ${svgWidth} ${lineLength}`} // Adjust viewBox width
         fill="none"

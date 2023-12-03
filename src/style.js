@@ -15,13 +15,16 @@ const styles = {
 
   marginX: "sm:mx-16 mx-6",
   marginY: "sm:my-16 my-6",
-
-  lineItemsPaddingX: "xl:px-[229px] sm:px-[49px] px-[29px]",
 };
 
 export const layout = {
-  section: `flex md:flex-row flex-col ${styles.paddingY}`,
-  sectionReverse: `flex md:flex-row flex-col-reverse ${styles.paddingY}`,
+  container: {
+    image: {
+      section:
+        "rounded-[50px] h-[1100px] w-full object-cover object-center opacity-50",
+    },
+  },
+  lineItems: "xl:px-[229px] sm:px-[49px] px-[29px]",
 
   sectionImgReverse: `flex-1 flex ${styles.flexCenter} md:mr-10 mr-0 md:mt-0 mt-10 relative`,
   sectionImg: `flex-1 flex ${styles.flexCenter} md:ml-10 ml-0 md:mt-0 mt-10 relative`,

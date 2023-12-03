@@ -3,10 +3,16 @@ import PropTypes from "prop-types";
 
 const DecodeTextEffect = ({
   text,
-  enableBlockChar = false,
+  blockChar = {
+    enabled: false,
+    random: false,
+    char: "█",
+  },
+  hideAfter = false,
   interval = 150,
+  onCompleted,
 }) => {
-  const [displayedText, setDisplayedText] = useState("");
+  const [displayedText, setDisplayedText] = useState(" ");
   const randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+░░░░░";
 
   useEffect(() => {
@@ -17,9 +23,15 @@ const DecodeTextEffect = ({
       let updatedText = currentText.map((char, index) => {
         if (revealed[index]) {
           return text[index];
-        } else if (revealed[index - 1] && enableBlockChar) {
+        } else if (revealed[index - 1] && blockChar.enabled) {
           // if previous char is revealed, reveal current char as block
-          return "█";
+          if (blockChar.random) {
+            return randomChars[Math.floor(Math.random() * randomChars.length)];
+          } else {
+            return blockChar.char;
+          }
+        } else if (hideAfter) {
+          return "";
         } else {
           return randomChars[Math.floor(Math.random() * randomChars.length)];
         }
@@ -31,19 +43,29 @@ const DecodeTextEffect = ({
       if (revealIndex !== -1) {
         revealed[revealIndex] = true;
         setTimeout(revealText, interval);
+      } else {
+        // if onCompleted is passed in and is a function, call it
+        // (javascript short-circuit evaluation)
+        onCompleted && onCompleted();
       }
     };
 
     revealText();
-  }, [text, enableBlockChar, interval]);
+  }, [text, hideAfter, interval]);
 
   return <div>{displayedText}</div>;
 };
 
 DecodeTextEffect.propTypes = {
   text: PropTypes.string.isRequired,
-  enableBlockChar: PropTypes.bool,
+  blockChar: PropTypes.shape({
+    enabled: PropTypes.bool,
+    random: PropTypes.bool,
+    char: PropTypes.string,
+  }),
+  hideAfter: PropTypes.bool,
   interval: PropTypes.number,
+  onCompleted: PropTypes.func,
 };
 
 export default DecodeTextEffect;

@@ -1,12 +1,13 @@
 /** @type {import('tailwindcss').Config} */
+/*eslint-env node*/
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   mode: "jit",
   theme: {
     extend: {
       colors: {
-        primary: "#0B0B0B",
-        secondary: "#00f6ff",
+        primary: "#050505", // black
+        secondary: "#D32C2C", // red
         dimWhite: "rgba(255, 255, 255, 0.7)",
         dimBlue: "rgba(9, 151, 124, 0.1)",
       },
@@ -23,5 +24,9 @@ export default {
       xl: "1700px",
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+
+  daisyui: {
+    prefix: "daisy-",
+  },
 };
