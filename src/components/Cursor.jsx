@@ -6,7 +6,7 @@ import { Modular } from "../assets/hero";
 const Cursor = ({ cursorVariant }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const size = {
-    default: 32,
+    default: 24,
     hover: 48,
     hoverLarge: 350,
     hoverMask: 500,
@@ -24,15 +24,18 @@ const Cursor = ({ cursorVariant }) => {
     };
   }, []);
 
+  const transition = {
+    type: "tween",
+    ease: "backOut",
+  };
+
   const variants = {
     default: {
       height: size.default,
       width: size.default,
       x: mousePosition.x - size.default / 2, // 32px size of cursor
       y: mousePosition.y - size.default / 2, // 32px size of cursor
-      transition: {
-        ease: "easeOut",
-      },
+      transition: transition,
     },
     hover: {
       height: size.hover,
@@ -40,9 +43,7 @@ const Cursor = ({ cursorVariant }) => {
       x: mousePosition.x - size.hover / 2, // 48px size of cursor
       y: mousePosition.y - size.hover / 2, // 48px size of cursor
       mixBlendMode: "difference",
-      transition: {
-        ease: "easeOut",
-      },
+      transition: transition,
     },
     "hover-lg": {
       height: size.hoverLarge,
@@ -50,30 +51,11 @@ const Cursor = ({ cursorVariant }) => {
       x: mousePosition.x - size.hoverLarge / 2, // 48px size of cursor
       y: mousePosition.y - size.hoverLarge / 2, // 48px size of cursor
       mixBlendMode: "difference",
-      transition: {
-        ease: "easeOut",
-      },
-    },
-    "hover-xl": {
-      height: size.hoverMask,
-      width: size.hoverMask,
-      x: mousePosition.x - size.hoverMask / 2, // 48px size of cursor
-      y: mousePosition.y - size.hoverMask / 2, // 48px size of cursor
-      mixBlendMode: "difference",
-      backgroundImage: `${Modular}`,
-      transition: {
-        ease: "easeOut",
-      },
+      transition: transition,
     },
   };
 
-  return (
-    <motion.div
-      className="cursor z-50"
-      variants={variants}
-      animate={cursorVariant}
-    />
-  );
+  return <motion.div className="cursor z-50" variants={variants} animate={cursorVariant} />;
 };
 
 Cursor.propTypes = {

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { layout } from "../../style";
 
-const SelectionCardCircle = ({ src, duration = 0.6, delay = 0.01, alt, offset = 100, once = false }) => {
+const SelectionCard = ({ src, duration = 0.6, delay = 0.01, alt, offset = 100, once = false }) => {
   const animationRevealVariant = {
     hidden: {
       opacity: 0.05,
@@ -37,7 +37,7 @@ const SelectionCardCircle = ({ src, duration = 0.6, delay = 0.01, alt, offset = 
   );
 };
 
-SelectionCardCircle.propTypes = {
+SelectionCard.propTypes = {
   src: PropTypes.string.isRequired,
   duration: PropTypes.number,
   delay: PropTypes.number,
@@ -46,4 +46,4 @@ SelectionCardCircle.propTypes = {
   once: PropTypes.bool,
 };
 
-export default SelectionCardCircle;
+export default SelectionCard;

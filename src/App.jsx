@@ -1,6 +1,6 @@
 import styles from "./style";
 import { useState, useCallback } from "react";
-import { Footer, Hero, Navbar, ProjectSection, ScrollDrawLine, RotateCross, Cursor } from "./components";
+import { Footer, Hero, Navbar, ProjectSection, Cursor } from "./components";
 import { CursorContext } from "./components/SubComponents/CreateContext";
 
 const App = () => {
@@ -19,12 +19,7 @@ const App = () => {
           </div>
         </div>
 
-        <div className="bg-primary relative">
-          <div className=" select-none pointer-events-none">
-            <ScrollDrawLine />
-            <RotateCross />
-          </div>
-        </div>
+        <div className="bg-primary relative"></div>
         <div className={`${styles.flexStart} z-10`}>
           {/* overlay components */}
           <div className={`${styles.boxWidth}`}>

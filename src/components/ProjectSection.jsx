@@ -21,18 +21,6 @@ const ProjectSection = () => {
   };
   return (
     <div>
-      <motion.img
-        src={Circle}
-        className="select-none"
-        initial={{ scale: 0 }}
-        animate={{ scale: 0.7 }}
-        transition={{
-          duration: 1,
-          delay: 1.2,
-          type: "spring",
-          stiffness: 200,
-        }}
-      />
       <div className=" flex flex-col overflow-hidden p-4 gap-10">
         <motion.img
           className={layout.container.image.section}
