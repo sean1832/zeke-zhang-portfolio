@@ -3,5 +3,6 @@ import close from "./close.svg";
 import ScrollLine from "./ScrollLine.svg";
 import Circle from "./Circle.svg";
 import Cross from "./Cross.svg";
+import Arrow45 from "./Arrow45.svg";
 
-export { menu, close, ScrollLine, Circle, Cross };
+export { menu, close, ScrollLine, Circle, Cross, Arrow45 };

@@ -1,7 +1,8 @@
 import styles from "./style";
 import { useState, useCallback } from "react";
-import { Footer, Hero, Navbar, ProjectSection, Cursor } from "./components";
-import { CursorContext } from "./components/SubComponents/CreateContext";
+import { Footer, Hero, Navbar, ProjectSection } from "./components";
+import { Cursor } from "./components/SubComponents";
+import { CursorContext } from "./util/CursorContext";
 
 const App = () => {
   const [cursorVariant, setCursorVariant] = useState("default");

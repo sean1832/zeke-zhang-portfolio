@@ -1,7 +1,7 @@
 import { layout } from "../style";
 import { TextDecode, TextDecodeCycle } from "./SubComponents";
 import { motion } from "framer-motion";
-import { CursorContext } from "./SubComponents/CreateContext";
+import { CursorContext } from "../util";
 import { useContext } from "react";
 
 const smallText = "xl:text-[40px] sm:text-[25px] ss:text-[18px] text-[16px] text-white";
