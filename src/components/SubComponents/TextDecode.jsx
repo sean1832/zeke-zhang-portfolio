@@ -53,6 +53,7 @@ const DecodeTextEffect = ({
     };
     // delay revealText by delay
     setTimeout(revealText, delay);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text, hideAfter, interval]);
 
   return <div>{displayedText}</div>;
