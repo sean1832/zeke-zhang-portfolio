@@ -38,8 +38,6 @@ def handel_copy(root, file, dir):
     shutil.copy(path, archive_file)
 
 def convert_all(dir):
-    # zip_files(dir, zip_path)
-    # find all images in dir
     for root, dirs, files in os.walk(dir):
         if is_subpath_of(root, archive_path):
             # skip archive
