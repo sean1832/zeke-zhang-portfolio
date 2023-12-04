@@ -25,7 +25,7 @@ const Card = ({
       y: offset,
     },
     visible: {
-      opacity: hover ? 0.4 : 0.6,
+      opacity: hover ? 0.5 : 0.7,
       y: 0,
       transition: {
         delay: delay,
