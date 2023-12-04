@@ -39,7 +39,7 @@ export const projects = {
         name: "Shortlisted Bachelor of Architectural Design Awards for Excellence",
       },
     ],
-    publication: [
+    publications: [
       {
         name: "Architecture students embrace life-changing learning on Country",
         url: "https://www.rmit.edu.au/news/all-news/2021/may/architectural-students-learning-on-country",
