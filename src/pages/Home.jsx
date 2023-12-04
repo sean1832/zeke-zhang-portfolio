@@ -1,4 +1,4 @@
-import { Hero, ProjectSection } from "../components";
+import { Hero, Gallery } from "../components";
 import styles from "../style";
 
 const Home = () => {
@@ -7,7 +7,7 @@ const Home = () => {
       <div className={`${styles.boxWidth}`}>
         <Hero />
       </div>
-      <ProjectSection />
+      <Gallery />
     </div>
   );
 };

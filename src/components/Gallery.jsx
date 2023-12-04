@@ -2,7 +2,7 @@ import { OnCountry, Modular, Kaira, AISuperblock } from "../assets/hero";
 import { Card } from "./SubComponents";
 import { renderLineBreakText } from "../util/reactHelper";
 
-const ProjectSection = () => {
+const Gallery = () => {
   return (
     <div>
       <div className=" flex flex-col overflow-hidden p-4 gap-10">
@@ -40,4 +40,4 @@ const ProjectSection = () => {
   );
 };
 
-export default ProjectSection;
+export default Gallery;
