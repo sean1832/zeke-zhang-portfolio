@@ -45,9 +45,9 @@ const Hero = () => {
       </div>
 
       <div className="flex flex-col px-[10px]">
-        <motion.p className={`${smallText} font-bold`}>
+        <motion.div className={`${smallText} font-bold`}>
           <TextDecodeCycle texts={["ARCHITECTURE_", "CODING_", "ANIMATION_"]} interval={30} cycleInterval={1500} />
-        </motion.p>
+        </motion.div>
       </div>
     </div>
   );
