@@ -60,7 +60,7 @@ def convert_all(dir):
 if __name__ == '__main__':
     try:
         convert_all(assets_path)
-        zip_files(archive_path, zip_path)
+        # zip_files(archive_path, zip_path)
         print('\n\ndone.')
     except Exception as e:
         print(e)
