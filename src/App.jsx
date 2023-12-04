@@ -1,6 +1,6 @@
 import styles from "./style";
 import { useState, useCallback } from "react";
-import { Footer, Hero, Navbar, ProjectSection } from "./components";
+import { Hero, Navbar, ProjectSection } from "./components";
 import { Cursor } from "./components/SubComponents";
 import { CursorContext } from "./util/CursorContext";
 

@@ -54,7 +54,7 @@ const Cursor = ({ cursorVariant }) => {
       width: size.default.circle,
       x: mousePosition.x - size.default.circle / 2,
       y: mousePosition.y - size.default.circle / 2,
-      "background-color": "transparent",
+      "background-color": "rgba(0, 0, 0, 0)", // transparent
       border: "2px solid white",
       transition: transition,
     },
@@ -84,13 +84,21 @@ const Cursor = ({ cursorVariant }) => {
 
   const arrowVariants = {
     default: {
+      opacity: 0,
       height: size.default.arrow,
       width: size.default.arrow,
       x: mousePosition.x - size.default.arrow / 2,
       y: mousePosition.y - size.default.arrow / 2,
       transition: transition,
     },
+    hover: {
+      opacity: 0,
+    },
+    "hover-lg": {
+      opacity: 0,
+    },
     "hover-link": {
+      opacity: 1,
       height: size.hoverLink.arrow,
       width: size.hoverLink.arrow,
       x: mousePosition.x - centerArrow(size.hoverLink.circle, size.hoverLink.arrow).offsetX + size.hoverLink.offset,

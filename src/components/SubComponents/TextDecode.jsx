@@ -10,9 +10,11 @@ const DecodeTextEffect = ({
   },
   hideAfter = false,
   interval = 150,
+  delay = 0,
   onCompleted,
+  initChar = "#&░*0░",
 }) => {
-  const [displayedText, setDisplayedText] = useState(" ");
+  const [displayedText, setDisplayedText] = useState(initChar);
   const randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+░░░░░";
 
   useEffect(() => {
@@ -49,8 +51,8 @@ const DecodeTextEffect = ({
         onCompleted && onCompleted();
       }
     };
-
-    revealText();
+    // delay revealText by delay
+    setTimeout(revealText, delay);
   }, [text, hideAfter, interval]);
 
   return <div>{displayedText}</div>;
@@ -65,7 +67,9 @@ DecodeTextEffect.propTypes = {
   }),
   hideAfter: PropTypes.bool,
   interval: PropTypes.number,
+  delay: PropTypes.number,
   onCompleted: PropTypes.func,
+  initChar: PropTypes.string,
 };
 
 export default DecodeTextEffect;

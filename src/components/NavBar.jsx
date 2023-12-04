@@ -1,16 +1,25 @@
-import { useState } from "react";
-import { BasketballClub, Dharavi, Hereditary } from "../assets/hero";
-import { menu, close } from "../assets/icons";
+import { useContext } from "react";
 import { navLinks } from "../constants";
+import { CursorContext } from "../util";
 
 const Navbar = () => {
+  const { updateCursorVariant } = useContext(CursorContext);
+
   return (
     <nav className="w-full flex justify-between py-6 items-top navbar">
-      <h1 className=" text-white text-[28px]">
+      <h1
+        className=" text-white text-[28px]"
+        onMouseEnter={() => updateCursorVariant("hover")}
+        onMouseLeave={() => updateCursorVariant("default")}
+      >
         <a href="#home">ZZ</a>
       </h1>
 
-      <ul className="list-none sm:flex hidden justify-end items-center flex-1">
+      <ul
+        className="list-none sm:flex hidden justify-end items-center flex-1"
+        onMouseEnter={() => updateCursorVariant("hover")}
+        onMouseLeave={() => updateCursorVariant("default")}
+      >
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
