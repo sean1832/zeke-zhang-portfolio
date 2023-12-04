@@ -1,7 +1,7 @@
 import React from "react";
 
-const OnCountry = () => {
+const SharaClark = () => {
   return <div className="text-white">OnCountry</div>;
 };
 
-export default OnCountry;
+export default SharaClark;
