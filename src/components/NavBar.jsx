@@ -1,20 +1,19 @@
 import { useContext } from "react";
 import { navLinks } from "../constants";
 import { CursorContext } from "../util";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { updateCursorVariant } = useContext(CursorContext);
 
   return (
     <nav className="w-full flex justify-between py-6 items-top navbar">
-      <h1 className=" text-white text-[28px]">
-        <a
-          href="#home"
-          onMouseEnter={() => updateCursorVariant("hover")}
-          onMouseLeave={() => updateCursorVariant("default")}
-        >
-          ZZ
-        </a>
+      <h1
+        className=" text-white text-[28px]"
+        onMouseEnter={() => updateCursorVariant("hover")}
+        onMouseLeave={() => updateCursorVariant("default")}
+      >
+        <Link to="/">ZZ</Link>
       </h1>
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">

@@ -3,10 +3,12 @@ import { motion, useAnimation } from "framer-motion";
 import { layout } from "../../style";
 import { useContext, useState, useEffect } from "react";
 import { CursorContext } from "../../util";
+import { Link } from "react-router-dom";
 
 const Card = ({
   src,
   className = layout.container.image.section,
+  link,
   duration = 0.6,
   delay = 0.01,
   offset = 100,
@@ -73,54 +75,57 @@ const Card = ({
   }, [hover, animationControl]);
 
   return (
-    <div
-      className={`relative overflow-hidden rounded-[50px]`}
-      onMouseEnter={() => {
-        setHover(true);
-        updateCursorVariant("hover-link");
-      }}
-      onMouseLeave={() => {
-        setHover(false);
-        updateCursorVariant("default");
-      }}
-    >
-      <motion.img
-        className={`${className}`}
-        src={src}
-        alt={title}
-        variants={animationRevealVariant}
-        initial="hidden"
-        whileInView="visible"
-        animate={animationControl}
-        whileHover="hover"
-        viewport={{
-          once: once,
+    <Link to={link}>
+      <div
+        className={`relative overflow-hidden rounded-[50px]`}
+        onMouseEnter={() => {
+          setHover(true);
+          updateCursorVariant("hover-link");
         }}
-      />
-      {hover && (
-        <div>
-          <motion.div
-            className="absolute top-0 w-full h-full flex items-start justify-start p-10"
-            variants={textRevealVariant}
-            initial="hidden"
-            animate="visible"
-          >
-            <div className="flex flex-col">
-              <h1 className="text-white text-[32px] leading-tight">{title}</h1>
-              <div className="flex justify-between">
-                <p className="text-white text-[16px] opacity-50">{subtitle}</p>
-                <p className="text-white text-[16px] opacity-100 font-bold">{subtitle2}</p>
+        onMouseLeave={() => {
+          setHover(false);
+          updateCursorVariant("default");
+        }}
+      >
+        <motion.img
+          className={`${className}`}
+          src={src}
+          alt={title}
+          variants={animationRevealVariant}
+          initial="hidden"
+          whileInView="visible"
+          animate={animationControl}
+          whileHover="hover"
+          viewport={{
+            once: once,
+          }}
+        />
+        {hover && (
+          <div>
+            <motion.div
+              className="absolute top-0 w-full h-full flex items-start justify-start p-10"
+              variants={textRevealVariant}
+              initial="hidden"
+              animate="visible"
+            >
+              <div className="flex flex-col">
+                <h1 className="text-white text-[32px] leading-tight">{title}</h1>
+                <div className="flex justify-between">
+                  <p className="text-white text-[16px] opacity-50">{subtitle}</p>
+                  <p className="text-white text-[16px] opacity-100 font-bold">{subtitle2}</p>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        </div>
-      )}
-    </div>
+            </motion.div>
+          </div>
+        )}
+      </div>
+    </Link>
   );
 };
 
 Card.propTypes = {
   src: PropTypes.string.isRequired,
+  link: PropTypes.string,
   className: PropTypes.string,
   duration: PropTypes.number,
   delay: PropTypes.number,
