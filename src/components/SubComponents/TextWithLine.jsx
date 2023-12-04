@@ -3,6 +3,10 @@ import PropType from "prop-types";
 
 const TextWithLine = ({ text1, text2, lineLength, tableWidth = 400 }) => {
   const renderSecondColumn = (item) => {
+    // Check for null, undefined, or empty string in item or item.name
+    if (!item || (typeof item === "object" && !item.name)) {
+      return "-";
+    }
     if (typeof item === "object" && item !== null && item.url) {
       return <a href={item.url}>{item.name}</a>;
     } else if (typeof item === "object" && item !== null) {
