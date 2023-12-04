@@ -12,7 +12,7 @@ export default {
         dimBlue: "rgba(9, 151, 124, 0.1)",
       },
       fontFamily: {
-        sans: ['"Martian Mono","Exo 2"', "Exo", "Poppins", "sans-serif"],
+        sans: ['"Martian Mono"'],
       },
     },
     screens: {
