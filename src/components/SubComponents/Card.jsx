@@ -86,6 +86,10 @@ const Card = ({
           setHover(false);
           updateCursorVariant("default");
         }}
+        onClick={() => {
+          setHover(false);
+          updateCursorVariant("default");
+        }}
       >
         <motion.img
           className={`${className}`}
