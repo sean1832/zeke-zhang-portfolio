@@ -8,7 +8,11 @@ const TextWithLine = ({ text1, text2, lineLength, tableWidth = 400 }) => {
       return "-";
     }
     if (typeof item === "object" && item !== null && item.url) {
-      return <a href={item.url}>{item.name}</a>;
+      return (
+        <a href={item.url} target="_blank" rel="noopener noreferrer">
+          {item.name}
+        </a>
+      );
     } else if (typeof item === "object" && item !== null) {
       return item.name;
     }
