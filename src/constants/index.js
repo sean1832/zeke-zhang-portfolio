@@ -14,7 +14,7 @@ export const navLinks = [
 ];
 
 export const projects = {
-  sharaClark: {
+  sharaClarke: {
     id: "001",
     fullName: "SHARA CLARKE:\nABORIGINAL CULTURAL & EDUCATION CENTRE",
     name: "SHARA CLARKE",

@@ -58,6 +58,14 @@ const Cursor = ({ cursorVariant }) => {
       border: "2px solid white",
       transition: transition,
     },
+    disabled: {
+      opacity: 0,
+      height: 0,
+      width: 0,
+      x: mousePosition.x - size.default.circle / 2,
+      y: mousePosition.y - size.default.circle / 2,
+      transition: transition,
+    },
     hover: {
       height: size.hover.circle,
       width: size.hover.circle,
