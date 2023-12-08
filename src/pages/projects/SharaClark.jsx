@@ -5,7 +5,7 @@ import ReactPlayer from "react-player/youtube";
 import { projects } from "../../constants";
 import styles from "../../style";
 import { SharaClarke_SitePlan } from "../../assets/projects/SharaClarke/svg";
-import { NorthPoint } from "../../components/SubComponents";
+import { NorthPoint, ScrollToTop } from "../../components/SubComponents";
 
 const SharaClarke = () => {
   const { updateCursorVariant } = useContext(CursorContext);
@@ -15,6 +15,7 @@ const SharaClarke = () => {
   const sharaClark = projects.sharaClarke;
   return (
     <div className={`text-white ${styles.paddingX}`}>
+      <ScrollToTop />
       <ProjectDescription project={sharaClark} />
       <div className="flex flex-col gap-10">
         <div
