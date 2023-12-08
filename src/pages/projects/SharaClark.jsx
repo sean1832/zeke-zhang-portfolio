@@ -4,6 +4,8 @@ import { CursorContext } from "../../util/CursorContext";
 import ReactPlayer from "react-player/youtube";
 import { projects } from "../../constants";
 import styles from "../../style";
+import { SharaClarke_SitePlan } from "../../assets/projects/SharaClarke/svg";
+import { NorthPoint } from "../../components/SubComponents";
 
 const SharaClarke = () => {
   const { updateCursorVariant } = useContext(CursorContext);
@@ -14,12 +16,18 @@ const SharaClarke = () => {
   return (
     <div className={`text-white ${styles.paddingX}`}>
       <ProjectDescription project={sharaClark} />
-      <div
-        className={`sm:h-[1100px] h-[320px] w-full object-cover object-right sm:object-center`}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <ReactPlayer url="https://youtu.be/q15wEzLeKXw" width="100%" height="100%" controls={true} />
+      <div className="flex flex-col gap-10">
+        <div
+          className={`sm:h-[1100px] h-[320px] w-full object-cover object-right sm:object-center`}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <ReactPlayer url="https://youtu.be/q15wEzLeKXw" width="100%" height="100%" controls={true} />
+        </div>
+        <div className=" relative flex justify-end">
+          <NorthPoint rotation={40} />
+          <img src={SharaClarke_SitePlan} alt="" className="w-[50%]" />
+        </div>
       </div>
     </div>
   );
