@@ -25,9 +25,9 @@ const SharaClarke = () => {
         >
           <ReactPlayer url="https://youtu.be/q15wEzLeKXw" width="100%" height="100%" controls={true} />
         </div>
-        <div className=" relative flex justify-end">
+        <div className=" relative flex w-full">
           <NorthPoint rotation={40} />
-          <img src={SharaClarke_SitePlan} alt="" className="w-[50%]" />
+          <img src={SharaClarke_SitePlan} alt="" className="" />
         </div>
       </div>
     </div>
