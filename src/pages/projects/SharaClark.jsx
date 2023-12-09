@@ -5,7 +5,31 @@ import ReactPlayer from "react-player/youtube";
 import { projects } from "../../constants";
 import styles from "../../style";
 import { SharaClarke_SitePlan } from "../../assets/projects/SharaClarke/svg";
-import { NorthPoint, ScrollToTop } from "../../components/SubComponents";
+import { NorthPoint, ScrollToTop, ImageMap } from "../../components/SubComponents";
+
+const spots = [
+  {
+    x: 95,
+    y: 47,
+    radius: 3,
+    component: <button>ARCHIE ROACH MUSIC HALL</button>,
+    onClick: () => console.log("clicked 1"),
+    onMouseEnter: () => console.log("entered 1"),
+    onMouseLeave: () => console.log("left 1"),
+  },
+  {
+    x: 80,
+    y: 47,
+    radius: 2,
+    component: <button>MULTIPURPOSE STUDIOS</button>,
+  },
+  {
+    x: 84.5,
+    y: 77,
+    radius: 2,
+    component: <button>RESTAURANT</button>,
+  },
+];
 
 const SharaClarke = () => {
   const { updateCursorVariant } = useContext(CursorContext);
@@ -27,7 +51,8 @@ const SharaClarke = () => {
         </div>
         <div className=" relative flex w-full">
           <NorthPoint rotation={40} />
-          <img src={SharaClarke_SitePlan} alt="" className="" />
+          {/* <img src={SharaClarke_SitePlan} alt="site plan" /> */}
+          <ImageMap src={SharaClarke_SitePlan} alt="site plan" hotspots={spots} />
         </div>
       </div>
     </div>
