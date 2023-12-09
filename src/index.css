@@ -23,3 +23,42 @@
   top: 0;
   left: 0;
 }
+
+/* text sizes */
+h0 {
+  font-family: "Martian Mono", sans-serif;
+  font-weight: 700;
+  font-size: 120px;
+  line-height: 20px;
+}
+
+h1 {
+  font-family: "Martian Mono", sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.05em;
+}
+
+h2 {
+  font-family: "Martian Mono", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: -0.05em;
+}
+
+h3 {
+  font-family: "Martian Mono", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 44px;
+  letter-spacing: -0.05em;
+}
+
+p {
+  font-family: "Martian Mono", sans-serif;
+  font-weight: 400; /* Normal text weight */
+  font-size: 12px; /* Standard text size */
+  line-height: 18px; /* Standard line height */
+}

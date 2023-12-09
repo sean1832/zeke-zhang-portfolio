@@ -7,6 +7,7 @@ import TextWithLineStack from "./TextWithLineStack";
 import Card from "./Card";
 import ImageMap from "./ImageMap";
 import DotMarker from "./DotMarker";
+import Modal from "./Modal";
 
 export {
   NorthPoint,
@@ -18,4 +19,5 @@ export {
   Card,
   ImageMap,
   DotMarker,
+  Modal,
 };

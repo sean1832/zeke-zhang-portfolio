@@ -1,4 +1,4 @@
 import Home from "./Home";
-import SharaClark from "./projects/SharaClark";
+import SharaClarke from "./projects/SharaClarke/SharaClarke";
 
-export { Home, SharaClark  };
+export { Home, SharaClarke };

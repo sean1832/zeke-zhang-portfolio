@@ -1,6 +1,6 @@
 import styles from "./style";
 import { useState, useCallback } from "react";
-import { Home, SharaClark } from "./pages";
+import { Home, SharaClarke } from "./pages";
 import { Navbar } from "./components/layout";
 import { Cursor } from "./components/feature";
 import { CursorContext } from "./components/utility";
@@ -25,7 +25,7 @@ const App = () => {
           </div>
           <Routes>
             <Route exact path="/" element={<Home />} />
-            <Route exact path="/project/SharaClark" element={<SharaClark />} />
+            <Route exact path="/project/SharaClarke" element={<SharaClarke />} />
           </Routes>
         </Router>
 
