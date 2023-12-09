@@ -8,7 +8,7 @@ const Gallery = () => {
       <div className=" flex flex-col overflow-hidden p-4 gap-10">
         <Card
           src={OnCountry}
-          link={"/project/sharaclark"}
+          link={"/project/sharaclarke"}
           once={true}
           title={renderLineBreakText("SHARA CLARKE ABORIGINAL\n CULTURAL & EDUCATIONAL CENTRE")}
           subtitle="DESIGN STUDIO"
