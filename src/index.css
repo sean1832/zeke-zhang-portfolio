@@ -29,7 +29,8 @@ h0 {
   font-family: "Martian Mono", sans-serif;
   font-weight: 700;
   font-size: 120px;
-  line-height: 20px;
+  line-height: 125px;
+  letter-spacing: -0.05em;
 }
 
 h1 {
