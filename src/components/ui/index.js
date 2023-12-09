@@ -6,5 +6,16 @@ import TextWithLine from "./TextWithLine";
 import TextWithLineStack from "./TextWithLineStack";
 import Card from "./Card";
 import ImageMap from "./ImageMap";
+import DotMarker from "./DotMarker";
 
-export { NorthPoint, SvgLine, TextDecode, TextDecodeCycle, TextWithLine, TextWithLineStack, Card, ImageMap };
+export {
+  NorthPoint,
+  SvgLine,
+  TextDecode,
+  TextDecodeCycle,
+  TextWithLine,
+  TextWithLineStack,
+  Card,
+  ImageMap,
+  DotMarker,
+};

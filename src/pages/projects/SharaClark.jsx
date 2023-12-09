@@ -7,14 +7,19 @@ import { ScrollToTop } from "../../components/feature";
 import { projects } from "../../constants";
 import styles from "../../style";
 import { SharaClarke_SitePlan } from "../../assets/projects/SharaClarke/svg";
-import { NorthPoint, ImageMap } from "../../components/ui";
+import { NorthPoint, ImageMap, DotMarker } from "../../components/ui";
 
 const spots = [
   {
     x: 95,
     y: 47,
     radius: 3,
-    component: <button>ARCHIE ROACH MUSIC HALL</button>,
+    component: (
+      <button className="flex flex-col items-center gap-5">
+        <DotMarker size={20} />
+        <h1>ARCHIE ROACH MUSIC HALL</h1>
+      </button>
+    ),
     onClick: () => console.log("clicked 1"),
     onMouseEnter: () => console.log("entered 1"),
     onMouseLeave: () => console.log("left 1"),
@@ -23,13 +28,34 @@ const spots = [
     x: 80,
     y: 47,
     radius: 2,
-    component: <button>MULTIPURPOSE STUDIOS</button>,
+    component: (
+      <button className="flex flex-col items-center gap-5">
+        <h1>MULTIPURPOSE STUDIOS</h1>
+        <DotMarker size={20} />
+      </button>
+    ),
+  },
+  {
+    x: 86,
+    y: 58,
+    radius: 2,
+    component: (
+      <button className="flex flex-col items-center gap-5">
+        <DotMarker size={20} />
+        <h1>TEACHING ROOM</h1>
+      </button>
+    ),
   },
   {
     x: 84.5,
-    y: 77,
+    y: 75.5,
     radius: 2,
-    component: <button>RESTAURANT</button>,
+    component: (
+      <button className="flex flex-col items-center gap-5">
+        <DotMarker size={20} />
+        <h1>RESTAURANT</h1>
+      </button>
+    ),
   },
 ];
 
@@ -58,7 +84,6 @@ const SharaClarke = () => {
         </div>
         <div className=" relative flex w-full">
           <NorthPoint rotation={40} />
-          {/* <img src={SharaClarke_SitePlan} alt="site plan" /> */}
           <ImageMap src={SharaClarke_SitePlan} alt="site plan" hotspots={spots} />
         </div>
       </div>
