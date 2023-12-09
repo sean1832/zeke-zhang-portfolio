@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { TextDecode } from ".";
+import TextDecode from "./TextDecode";
 import PropTypes from "prop-types";
 
 const TextDecodeCycle = ({ texts, interval = 150, cycleInterval = 3000 }) => {
@@ -23,13 +23,7 @@ const TextDecodeCycle = ({ texts, interval = 150, cycleInterval = 3000 }) => {
     }
   }, [textCompleted, texts.length, cycleInterval]);
 
-  return (
-    <TextDecode
-      text={texts[currentIndex]}
-      interval={interval}
-      onCompleted={handleTextCompleted}
-    />
-  );
+  return <TextDecode text={texts[currentIndex]} interval={interval} onCompleted={handleTextCompleted} />;
 };
 
 TextDecodeCycle.propTypes = {

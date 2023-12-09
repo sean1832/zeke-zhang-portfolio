@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { navLinks } from "../constants";
-import { CursorContext } from "../util";
+import { navLinks } from "../../constants";
+import { CursorContext } from "../utility";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {

@@ -1,11 +1,13 @@
-import { ProjectDescription } from "../../components";
 import { useContext } from "react";
-import { CursorContext } from "../../util/CursorContext";
 import ReactPlayer from "react-player/youtube";
+
+import { ProjectDescription } from "../../components/layout";
+import { CursorContext } from "../../components/utility";
+import { ScrollToTop } from "../../components/feature";
 import { projects } from "../../constants";
 import styles from "../../style";
 import { SharaClarke_SitePlan } from "../../assets/projects/SharaClarke/svg";
-import { NorthPoint, ScrollToTop, ImageMap } from "../../components/SubComponents";
+import { NorthPoint, ImageMap } from "../../components/ui";
 
 const spots = [
   {
@@ -43,11 +45,16 @@ const SharaClarke = () => {
       <ProjectDescription project={sharaClark} />
       <div className="flex flex-col gap-10">
         <div
-          className={`sm:h-[1100px] h-[320px] w-full object-cover object-right sm:object-center`}
+          className="sm:h-[1100px] h-[320px] w-full object-cover object-right sm:object-center"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <ReactPlayer url="https://youtu.be/q15wEzLeKXw" width="100%" height="100%" controls={true} />
+          <ReactPlayer
+            url="https://youtu.be/q15wEzLeKXw"
+            width="100%"
+            height="100%"
+            controls={true}
+          />
         </div>
         <div className=" relative flex w-full">
           <NorthPoint rotation={40} />

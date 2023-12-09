@@ -1,4 +1,4 @@
-import { Hero, Gallery } from "../components";
+import { Hero, Gallery } from "../components/layout";
 import styles from "../style";
 
 const Home = () => {

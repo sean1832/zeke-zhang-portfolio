@@ -1,9 +1,9 @@
 import styles from "./style";
 import { useState, useCallback } from "react";
 import { Home, SharaClark } from "./pages";
-import { Navbar } from "./components";
-import { Cursor } from "./components/SubComponents";
-import { CursorContext } from "./util/CursorContext";
+import { Navbar } from "./components/layout";
+import { Cursor } from "./components/feature";
+import { CursorContext } from "./components/utility";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 const App = () => {

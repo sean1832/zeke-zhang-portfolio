@@ -1,6 +1,6 @@
 import PropType from "prop-types";
-import { TextWithLine, TextWithLineStack } from "./SubComponents";
-import { renderLineBreakText } from "../util/reactHelper";
+import { TextWithLine, TextWithLineStack } from "../ui";
+import { renderLineBreakText } from "../utility/reactHelper";
 
 const ProjectDescription = ({ project }) => {
   const windowWidth = window.innerWidth;

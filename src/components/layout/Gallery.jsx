@@ -1,6 +1,6 @@
-import { OnCountry, Modular, Kaira, AISuperblock } from "../assets/hero";
-import { Card } from "./SubComponents";
-import { renderLineBreakText } from "../util/reactHelper";
+import { OnCountry, Modular, Kaira, AISuperblock } from "../../assets/hero";
+import { Card } from "../ui";
+import { renderLineBreakText } from "../utility/reactHelper";
 
 const Gallery = () => {
   return (

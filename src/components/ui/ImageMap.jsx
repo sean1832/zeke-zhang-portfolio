@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { ImageMapResizer } from "../../util";
+import { ImageMapResizer } from "../utility";
 
 // https://imagemap.org/
 

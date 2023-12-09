@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { motion, useAnimation } from "framer-motion";
 import { layout } from "../../style";
 import { useContext, useState, useEffect } from "react";
-import { CursorContext } from "../../util";
+import { CursorContext } from "../utility";
 import { Link } from "react-router-dom";
 
 const Card = ({
