@@ -40,7 +40,7 @@ const DotMarker = ({ size = 1 }) => {
           top: `calc(50% - ${halfSize}px)`,
           left: `calc(50% - ${halfSize}px)`,
         }}
-        initial={{ scale: 0.4, opacity: 1 }}
+        initial={{ scale: 0.4, opacity: 0.9 }}
         animate={{ scale: 5, opacity: 0 }}
         transition={{
           damping: 10,
