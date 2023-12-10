@@ -4,6 +4,7 @@ import { layout } from "../../style";
 import { useContext, useState, useEffect } from "react";
 import { CursorContext } from "../utility";
 import { Link } from "react-router-dom";
+import { Blurhash } from "react-blurhash";
 
 const Card = ({
   src,
@@ -16,10 +17,12 @@ const Card = ({
   title,
   subtitle,
   subtitle2,
+  blurhash,
 }) => {
   const [hover, setHover] = useState(false);
   const animationControl = useAnimation();
   const { updateCursorVariant } = useContext(CursorContext);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const animationRevealVariant = {
     hidden: {
@@ -51,6 +54,14 @@ const Card = ({
       },
     },
   };
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setIsLoaded(true);
+    };
+    img.src = src;
+  }, [src]);
 
   useEffect(() => {
     if (hover) {
@@ -91,6 +102,18 @@ const Card = ({
           updateCursorVariant("default");
         }}
       >
+        {blurhash && (
+          <div style={{ display: isLoaded ? "none" : "inline" }}>
+            <Blurhash
+              hash={blurhash}
+              width={window.innerWidth}
+              height={window.innerHeight}
+              resolutionX={32}
+              resolutionY={32}
+              punch={1}
+            />
+          </div>
+        )}
         <motion.img
           className={`${className}`}
           src={src}
@@ -103,7 +126,10 @@ const Card = ({
           viewport={{
             once: once,
           }}
+          loading="lazy"
+          style={{ display: !isLoaded ? "none" : "inline" }}
         />
+
         {hover && (
           <div>
             <motion.div
@@ -139,6 +165,7 @@ Card.propTypes = {
   title: PropTypes.arrayOf(PropTypes.object),
   subtitle: PropTypes.string,
   subtitle2: PropTypes.string,
+  blurhash: PropTypes.string,
 };
 
 export default Card;

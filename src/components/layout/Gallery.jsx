@@ -1,6 +1,7 @@
 import { OnCountry, Modular, Kaira, AISuperblock } from "../../assets/hero";
 import { Card } from "../ui";
 import { renderLineBreakText } from "../utility/reactHelper";
+import blurhash from "../../assets/blurhashes.json";
 
 const Gallery = () => {
   return (
@@ -13,6 +14,7 @@ const Gallery = () => {
           title={renderLineBreakText("SHARA CLARKE ABORIGINAL\n CULTURAL & EDUCATIONAL CENTRE")}
           subtitle="DESIGN STUDIO"
           subtitle2="2021"
+          blurhash={blurhash.OnCountry}
         />
         <Card
           src={Modular}
@@ -20,6 +22,7 @@ const Gallery = () => {
           title={renderLineBreakText("MODULAR:\nNATURAL - BUILD")}
           subtitle={"ARCHITECTURE COMPETITION"}
           subtitle2={"2021"}
+          blurhash={blurhash.Modular}
         />
         <Card
           src={Kaira}
@@ -27,6 +30,7 @@ const Gallery = () => {
           title={renderLineBreakText("KAIRA LOORO:\nCHILDREN'S HOUSE")}
           subtitle={"ARCHITECTURE COMPETITION"}
           subtitle2={"2021"}
+          blurhash={blurhash.Kaira}
         />
         <Card
           src={AISuperblock}
@@ -34,6 +38,7 @@ const Gallery = () => {
           title={renderLineBreakText("JAKARTA RISING:\nAI SUPERBLOCK")}
           subtitle={"DESIGN STUDIO"}
           subtitle2={"2022"}
+          blurhash={blurhash.AISuperblock}
         />
       </div>
     </div>
