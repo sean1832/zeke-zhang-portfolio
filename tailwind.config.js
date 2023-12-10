@@ -24,9 +24,9 @@ export default {
       xl: "1700px",
     },
   },
-  // plugins: [require("daisyui")],
+  plugins: [require("daisyui")],
 
-  // daisyui: {
-  //   prefix: "daisy-",
-  // },
+  daisyui: {
+    prefix: "daisy-",
+  },
 };
