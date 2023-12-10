@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { navLinks } from "../../constants";
 import { CursorContext } from "../utility";
 import { Link } from "react-router-dom";
+import { ZekeLogoTransparent } from "../../assets/icons";
 
 const Navbar = () => {
   const { updateCursorVariant } = useContext(CursorContext);
@@ -13,7 +14,9 @@ const Navbar = () => {
         onMouseEnter={() => updateCursorVariant("hover")}
         onMouseLeave={() => updateCursorVariant("default")}
       >
-        <Link to="/">ZZ</Link>
+        <Link to="/">
+          <img src={ZekeLogoTransparent} alt="Zeke Logo" className="w-[40px]" />
+        </Link>
       </h1>
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
