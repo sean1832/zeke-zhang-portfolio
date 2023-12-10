@@ -70,7 +70,7 @@ const ImageMap = ({ src, alt, hotspots }) => {
         useMap="#image_map"
         onLoad={() => setIsLoaded(true)}
       />
-      <div className={`w-full h-[1800px] ${isLoaded ? "daisy-skeleton" : ""}`} />
+      <div className={`w-full h-[1800px] ${!isLoaded ? "daisy-skeleton" : ""}`} />
 
       {isLoaded &&
         hotspots.map((spot, index) => {
