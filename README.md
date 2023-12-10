@@ -1,5 +1,11 @@
 ## Zeke Zhang Portfolio Frontend
 
+## Stack
+
+- React
+- Vite
+- Tailwind CSS
+
 ### Dev Setup
 
 1. Install [Node.js](https://nodejs.org/en/download/)
