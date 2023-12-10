@@ -58,7 +58,7 @@ const Modal = ({ isOpen, onClose, children, variant }) => {
         overflow-y-auto 
         h-full 
         w-full 
-        z-50 
+        z-40 
         backdrop-blur-sm 
         flex 
         justify-center 
