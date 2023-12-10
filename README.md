@@ -1,6 +1,6 @@
-# Zeke Zhang Portfolio Frontend
+## Zeke Zhang Portfolio Frontend
 
-## Dev Setup
+### Dev Setup
 
 1. Install [Node.js](https://nodejs.org/en/download/)
 2. run `npm install` in the root directory
