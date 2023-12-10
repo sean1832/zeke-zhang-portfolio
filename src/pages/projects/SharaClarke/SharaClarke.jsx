@@ -4,7 +4,7 @@ import ReactPlayer from "react-player/youtube";
 import { ProjectDescription } from "../../../components/layout";
 import { CursorContext } from "../../../components/utility";
 import { ScrollToTop } from "../../../components/feature";
-import { projects } from "../../../constants";
+import SharaClarkeData from "../../../data/projects/SharaClarkeData.json";
 import styles from "../../../style";
 import { SharaClarke_SitePlan } from "../../../assets/projects/SharaClarke/svg";
 import { NorthPoint, ImageMap, DotMarker, Modal } from "../../../components/ui";
@@ -69,11 +69,10 @@ const SharaClarke = () => {
   // Define callback functions for mouse enter and leave
   const handleMouseEnter = () => updateCursorVariant("disabled");
   const handleMouseLeave = () => updateCursorVariant("default");
-  const sharaClarke = projects.sharaClarke;
   return (
     <div className={`text-white ${styles.paddingX}`}>
       <ScrollToTop />
-      <ProjectDescription project={sharaClarke} />
+      <ProjectDescription project={SharaClarkeData} />
       <div className="flex flex-col gap-10">
         <div
           className="sm:h-[1100px] h-[320px] w-full object-cover object-right sm:object-center"
