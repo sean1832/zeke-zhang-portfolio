@@ -10,7 +10,7 @@ archive_path = 'src/assets/archive/'
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description='Resize and convert images.')
-    parser.add_argument('-s', '--size', type=int, default=1920,
+    parser.add_argument('-s', '--size', type=int, default=-1,
                         help='The maximum width or height for the output images.')
     return parser.parse_args()
 
@@ -60,7 +60,9 @@ def convert_all(dir, size):
                 path = os.path.join(root, file)
                 handel_copy(root, file, dir)
 
-                resize_image(path, size)
+                if size > 0:
+                    # resize image
+                    resize_image(path, size)
 
                 # convert to webp
                 name = os.path.splitext(file)[0]
