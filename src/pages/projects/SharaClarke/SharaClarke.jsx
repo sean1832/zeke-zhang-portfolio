@@ -8,7 +8,7 @@ import { projects } from "../../../constants";
 import styles from "../../../style";
 import { SharaClarke_SitePlan } from "../../../assets/projects/SharaClarke/svg";
 import { NorthPoint, ImageMap, DotMarker, Modal } from "../../../components/ui";
-import useModal from "../../../hooks/UseModal";
+import { useModal } from "../../../hooks";
 import ArchieRoachModal from "./ArchieRoachModal";
 
 const SharaClarke = () => {
