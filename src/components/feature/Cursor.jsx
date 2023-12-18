@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Arrow45 } from "../../assets/icons";
 import PropTypes from "prop-types";
@@ -29,18 +29,24 @@ const Cursor = ({ cursorVariant }) => {
       offset: 40,
     },
   };
-
+  const updateMousePosition = useCallback((e) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+  }, []);
   useEffect(() => {
-    const mouseMoveHandler = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    let animationFrameId = null;
+
+    const animate = () => {
+      document.addEventListener("mousemove", updateMousePosition);
+      animationFrameId = requestAnimationFrame(animate);
     };
 
-    window.addEventListener("mousemove", mouseMoveHandler);
+    animate();
 
     return () => {
-      window.removeEventListener("mousemove", mouseMoveHandler);
+      document.removeEventListener("mousemove", updateMousePosition);
+      cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [updateMousePosition]);
 
   const transition = {
     type: "tween",
@@ -120,10 +126,16 @@ const Cursor = ({ cursorVariant }) => {
       <motion.img
         src={Arrow45}
         className="fixed z-[51] pointer-events-none"
+        style={{ willChange: "transform, opacity" }}
         variants={arrowVariants}
         animate={cursorVariant}
       />
-      <motion.div className="cursor z-50" variants={cursorVariants} animate={cursorVariant} />
+      <motion.div
+        className="cursor z-50"
+        style={{ willChange: "transform, opacity" }}
+        variants={cursorVariants}
+        animate={cursorVariant}
+      />
     </div>
   );
 };
