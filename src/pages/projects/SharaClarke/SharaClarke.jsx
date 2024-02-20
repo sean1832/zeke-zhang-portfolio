@@ -15,8 +15,8 @@ const SharaClarke = () => {
   const { isModalOpen, openModal, closeModal } = useModal(false);
   const spots = [
     {
-      x: 93,
-      y: 44,
+      x: 80,
+      y: 30,
       radius: 1,
       component: (
         <div>
@@ -31,8 +31,8 @@ const SharaClarke = () => {
       ),
     },
     {
-      x: 83,
-      y: 48,
+      x: 70,
+      y: 32,
       radius: 1,
       component: (
         <button className="flex flex-col items-center gap-2">
@@ -42,8 +42,8 @@ const SharaClarke = () => {
       ),
     },
     {
-      x: 88,
-      y: 59,
+      x: 75,
+      y: 40,
       radius: 1,
       component: (
         <button className="flex flex-col items-center gap-2">
@@ -53,8 +53,8 @@ const SharaClarke = () => {
       ),
     },
     {
-      x: 87,
-      y: 75,
+      x: 74,
+      y: 51,
       radius: 1,
       component: (
         <button className="flex flex-col items-center gap-2">
