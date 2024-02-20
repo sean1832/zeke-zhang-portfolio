@@ -1,29 +1,31 @@
 import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { ImageMapResizer } from "../utility";
+import imageMapResize from "../utility/ImageMapResizer";
 
 // https://imagemap.org/
 
 const ImageMap = ({ src, alt, hotspots }) => {
   const imageRef = useRef(null);
+  const mapRef = useRef(null); // Reference to the <map> element
   const [scalingFactor, setScalingFactor] = useState({ width: 1, height: 1 });
   const [isLoaded, setIsLoaded] = useState(false);
 
   const handleMarkerClick = (index) => {
-    if (hotspots[index].onClick) {
-      hotspots[index].onClick();
-    }
+    hotspots[index].onClick && hotspots[index].onClick();
   };
 
   const handleMarkerMouseEnter = (index) => {
-    if (hotspots[index].onMouseEnter) {
-      hotspots[index].onMouseEnter();
-    }
+    hotspots[index].onMouseEnter && hotspots[index].onMouseEnter();
   };
 
   const handleMarkerMouseLeave = (index) => {
-    if (hotspots[index].onMouseLeave) {
-      hotspots[index].onMouseLeave();
+    hotspots[index].onMouseLeave && hotspots[index].onMouseLeave();
+  };
+
+  // Adjusted to directly use the imported imageMapResize function
+  const resizeImageMap = () => {
+    if (mapRef.current) {
+      imageMapResize(mapRef.current);
     }
   };
 
@@ -31,8 +33,8 @@ const ImageMap = ({ src, alt, hotspots }) => {
     const image = imageRef.current;
     if (image && image.complete && image.naturalHeight !== 0) {
       setScalingFactor({
-        width: image.width / image.naturalWidth,
-        height: image.height / image.naturalHeight,
+        width: image.offsetWidth / image.naturalWidth,
+        height: image.offsetHeight / image.naturalHeight,
       });
     }
   };
@@ -40,25 +42,19 @@ const ImageMap = ({ src, alt, hotspots }) => {
   useEffect(() => {
     const image = imageRef.current;
     if (image) {
-      // Trigger updateScalingFactor() if image is first loaded
-      image.addEventListener("load", updateScalingFactor);
+      image.addEventListener("load", () => {
+        setIsLoaded(true);
+        updateScalingFactor();
+        resizeImageMap(); // Call after image load and scaling factor update
+      });
     }
-    // Trigger updateScalingFactor() if window is resized
-    window.addEventListener("resize", updateScalingFactor);
+    window.addEventListener("resize", () => {
+      updateScalingFactor();
+      resizeImageMap(); // Ensure map is resized on window resize as well
+    });
     return () => {
-      if (image) {
-        image.removeEventListener("load", updateScalingFactor);
-      }
-      window.removeEventListener("resize", updateScalingFactor);
+      window.removeEventListener("resize", resizeImageMap);
     };
-  }, []);
-
-  useEffect(() => {
-    const useMapName = imageRef.current?.useMap;
-
-    if (useMapName) {
-      ImageMapResizer(useMapName);
-    }
   }, []);
 
   return (
@@ -71,39 +67,38 @@ const ImageMap = ({ src, alt, hotspots }) => {
         onLoad={() => setIsLoaded(true)}
       />
       {!isLoaded && <div className="daisy-skeleton w-full h-[1800px]" />}
-
       {isLoaded &&
         hotspots.map((spot, index) => {
-          const Component = spot.component;
           const style = {
             position: "absolute",
-            left: `${(spot.x - spot.radius) * scalingFactor.width}px`,
-            top: `${(spot.y - spot.radius) * scalingFactor.height}px`,
-            width: `${spot.radius * 2 * scalingFactor.width}px`,
-            height: `${spot.radius * 2 * scalingFactor.height}px`,
-            // more styles...
+            left: `${spot.x * scalingFactor.width - (spot.radius * scalingFactor.width) / 0.7}px`, // Adjust for centering
+            top: `${spot.y * scalingFactor.height - (spot.radius * scalingFactor.height) / 0.7}px`, // Adjust for centering
+            width: `${spot.radius * 0.7}px`, // Optional: Consider not scaling the size or apply a different strategy
+            height: `${spot.radius * 0.7}px`, // Optional: Consider not scaling the size or apply a different strategy
           };
 
           return (
-            <div key={index} style={style}>
-              {React.cloneElement(Component, {
-                onClick: () => handleMarkerClick(index),
-                onMouseEnter: () => handleMarkerMouseEnter(index),
-                onMouseLeave: () => handleMarkerMouseLeave(index),
-                // more props...
+            <div
+              key={index}
+              style={style}
+              onClick={() => handleMarkerClick(index)}
+              onMouseEnter={() => handleMarkerMouseEnter(index)}
+              onMouseLeave={() => handleMarkerMouseLeave(index)}
+            >
+              {React.cloneElement(spot.component, {
+                style: { width: "100%", height: "100%" }, // Ensure the spot component fills the container
               })}
             </div>
           );
         })}
-
       <map name="image_map">
         {hotspots.map((spot, index) => (
           <area
             key={index}
             shape="circle"
             coords={`${spot.x},${spot.y},${spot.radius}`}
-            href={spot.href}
-            alt={spot.alt}
+            href={spot.href || "#"}
+            alt={spot.alt || ""}
           />
         ))}
       </map>
@@ -114,7 +109,6 @@ const ImageMap = ({ src, alt, hotspots }) => {
 ImageMap.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string,
-  href: PropTypes.string,
   hotspots: PropTypes.arrayOf(
     PropTypes.shape({
       x: PropTypes.number.isRequired,
