@@ -47,81 +47,38 @@ const ImageMap = ({ src, alt, hotspots }) => {
     return predefinedDimensions;
   };
 
-  useEffect(() => {
-    const image = imageRef.current;
+  // Function to update the scaling factor based on the SVG's original and rendered size
+  const updateScalingFactor = () => {
+    const svgElement = imageRef.current;
+    setIsLoaded(true);
+    if (!svgElement) return;
 
-    const updateScalingFactor = () => {
-      const rect = image.getBoundingClientRect(); // Get the rendered dimensions
+    // Assuming getOriginalDimensions is a function you've defined to get the SVG's original dimensions
+    const { width: originalWidth, height: originalHeight } = getOriginalDimensions(svgElement);
 
-      // Fallback dimensions if viewBox is not accessible
-      let naturalWidth = rect.width;
-      let naturalHeight = rect.height;
-
-      // Attempt to access viewBox for more accurate dimensions
-      const viewBoxAttr = image.getAttribute("viewBox");
-      if (viewBoxAttr) {
-        const viewBoxParts = viewBoxAttr.split(" ");
-        if (viewBoxParts.length === 4) {
-          naturalWidth = parseFloat(viewBoxParts[2]);
-          naturalHeight = parseFloat(viewBoxParts[3]);
-        }
-      }
-
-      if (rect.width && rect.height) {
-        setScalingFactor({
-          width: rect.width / naturalWidth,
-          height: rect.height / naturalHeight,
-        });
-        setIsLoaded(true);
-      }
-    };
-
-    // Ensure this logic runs after the SVG is fully loaded
-    if (image.complete || image.tagName.toLowerCase() === "svg") {
-      updateScalingFactor();
-    } else {
-      image.addEventListener("load", updateScalingFactor);
-      return () => image.removeEventListener("load", updateScalingFactor);
-    }
-  }, []);
+    const rect = svgElement.getBoundingClientRect();
+    setScalingFactor({
+      width: rect.width / originalWidth,
+      height: rect.height / originalHeight,
+    });
+  };
 
   useEffect(() => {
-    const updateScalingFactor = () => {
-      const image = imageRef.current;
-      if (!image) return;
-
-      const rect = image.getBoundingClientRect(); // Get the rendered dimensions
-
-      // Assuming a method to get original dimensions, replace with actual values or method
-      const originalDim = getOriginalDimensions();
-      const originalWidth = originalDim.width; /* your method to get original width */
-      const originalHeight = originalDim.height; /* your method to get original height */
-
-      setScalingFactor({
-        width: rect.width / originalWidth,
-        height: rect.height / originalHeight,
-      });
-    };
-
-    // Update scaling factor upon window resize
-    window.addEventListener("resize", updateScalingFactor);
-
-    // Initial update in case of any asynchronous loading or dynamic sizing
+    // Ensure the scaling factor is recalculated on initial load and when the `src` prop changes
     updateScalingFactor();
 
-    // Cleanup to avoid memory leaks
-    return () => window.removeEventListener("resize", updateScalingFactor);
-  }, []); // Empty dependency array means this effect runs once on mount, but consider dependencies if needed
+    // Optionally, add an event listener for window resize if you want to update the scaling factor when the window is resized
+    window.addEventListener("resize", updateScalingFactor);
+
+    // Cleanup function to remove the event listener
+    return () => {
+      window.removeEventListener("resize", updateScalingFactor);
+    };
+  }, [src]); // Add any other props or state variables that, when changed, should trigger a recalculation of the scaling factor
 
   return (
     <div className="w-full relative">
-      <img
-        src={src}
-        alt={alt}
-        ref={imageRef}
-        useMap="#image_map"
-        onLoad={() => setIsLoaded(true)}
-      />
+      <img src={src} alt={alt} ref={imageRef} useMap="#image_map" onLoad={updateScalingFactor} />
       {!isLoaded && <div className="daisy-skeleton w-full h-[1800px]" />}
       {isLoaded &&
         hotspots.map((spot, index) => {
